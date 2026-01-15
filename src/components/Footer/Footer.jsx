@@ -1,5 +1,3 @@
-import "./Footer.css";
-
 <div class="page"> 
   <footer class="footer">
      <p className="footer__productiondev">Developed by Nada Longo</p>

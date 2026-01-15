@@ -10,10 +10,10 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 
-Project Design: Figma.com 
+Project Design: 
 Github Live Link: https://joaonada.github.io/se_project_react/
 
+Github Link:
 [git@github.com:joaonada/se_project_react.git](https://github.com/joaonada/se_project_react.git)
 
 
-https://github.com/joaonada/se_project_react.git
