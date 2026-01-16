@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import './App.css';
-import { coordinates, APIkey } from '../../utils/constants';
+import { coordinates, apiKey } from '../../utils/constants';
 import Header from '../Header/Header';
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -35,7 +35,7 @@ function App() {
   };
 
   useEffect(() => {
-    getWeather(coordinates, APIkey)
+    getWeather(coordinates, apiKey)
       .then((data) => {
         const filteredData =  filterWeatherData(data);
         setWeatherData(filteredData);
