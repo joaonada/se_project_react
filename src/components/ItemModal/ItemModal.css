@@ -1,0 +1,9 @@
+.modal__close {
+   background-image: url('./path-to-close-icon.svg');
+   background-repeat: no-repeat;
+   background-position: center;
+   width: 24px;
+   height: 24px;
+   border: none;
+   cursor: pointer;
+}

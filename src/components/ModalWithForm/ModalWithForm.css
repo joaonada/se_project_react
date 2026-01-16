@@ -1,4 +1,6 @@
 .modal {
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
    position: fixed;
    top: 0;
    left: 0;
@@ -12,6 +14,7 @@
 }
 
 .modal_opened {
+    opacity: 1;
    visibility: visible; 
 }
 
@@ -23,6 +26,7 @@
     position: absolute;
     top: 20px;
     right: 28px;
+    cursor: pointer;
 }
 
 .modal__content {
@@ -50,4 +54,14 @@
     padding: 0;
     display: flex;
     flex-direction: column;
+}
+
+.modal__close {
+  background-image: url('path/to/close-icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  cursor: pointer;
 }
