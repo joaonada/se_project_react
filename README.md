@@ -1,7 +1,8 @@
 # React + Vite
 
-Project 10: WTWR
-se_project_react
+Spring 10: React.js
+Project 10: WTWR 
+Repository: se_project_react
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
