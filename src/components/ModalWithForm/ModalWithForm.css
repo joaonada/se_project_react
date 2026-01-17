@@ -1,67 +1,57 @@
 .modal {
-    opacity: 0;
-    transition: opacity 0.3s, visibility 0.3s;
-   position: fixed;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   background-color: #0000004d;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0000004d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
 }
 
 .modal_opened {
-    opacity: 1;
-   visibility: visible; 
+  opacity: 1;
+  visibility: visible;
 }
 
 .modal__title {
-   margin: 0; 
+  margin: 0;
 }
 
 .modal__close {
-    position: absolute;
-    top: 20px;
-    right: 28px;
-    cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  cursor: pointer;
 }
 
 .modal__content {
-   background-color: #fff;
-   position: relative; 
-   padding: 28px 28px 36px;
-   max-width: 496px;
-   box-sizing: border-box;
-   width: 100%;
-
+  background-color: #fff;
+  position: relative;
+  padding: 28px 28px 36px;
+  max-width: 496px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .modal__form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .modal__input {
-    display: block;
+  display: block;
 }
 
 .modal__radio-buttons {
-    border: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
+  border: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.modal__close {
-  background-image: url('path/to/close-icon.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 24px;
-  height: 24px;
-  border: none;
-  cursor: pointer;
-}
