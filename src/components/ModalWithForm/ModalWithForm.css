@@ -45,7 +45,10 @@
 }
 
 .modal__input {
+  border: none;
+  border-bottom: 1px solid black;
   display: block;
+  width: 100%;
 }
 
 .modal__radio-buttons {

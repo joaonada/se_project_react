@@ -15,4 +15,4 @@ Project Design:
 Github Live Link: https://github.com/joaonada/se_project_react.git
 
 Local Terminal Link:
-[git@github.com:joaonada/se_project_react.git](http://localhost:3000/se_project_react/)
+[git@github.com:joaonada/se_project_react.git](https://github.com/joaonada/se_project_react.git)
