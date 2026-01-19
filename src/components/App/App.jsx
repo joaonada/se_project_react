@@ -80,7 +80,7 @@ function App() {
         onClose={closeActiveModal}
       >
         <label htmlFor="name" className="modal__label">
-          Name{""}
+          Name{""} 
           <input
             type="text"
             className="modal__input"

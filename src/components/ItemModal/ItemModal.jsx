@@ -10,7 +10,6 @@ function ItemModal({ isOpen, onClose, card }) {
           className="modal__close"
           aria-label="Close modal"
         >
-          {}
         </button>
         <img
           src={card.link}
