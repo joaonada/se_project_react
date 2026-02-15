@@ -1,13 +1,12 @@
-.cards__list {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  gap: 21px;
+.clothes-section {
+    flex-grow: 1;
 }
 
-.main__list {
+.clothes-section__row {
+    display: flex;
+}
+
+.clothes-section__list {
   display: grid;
   grid-template-columns: repeat(auto-fit, 283px);
   grid-template-rows: repeat(auto-fit, 283px);

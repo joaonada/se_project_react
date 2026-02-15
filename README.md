@@ -1,7 +1,7 @@
 # React + Vite
 
-Spring 10: React.js
-Project 10: WTWR 
+Spring 11: React Routing and State Management
+Project 11: WTWR 
 Repository: se_project_react
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -14,5 +14,4 @@ Currently, two official plugins are available:
 Project Design:
 Github Live Link: https://github.com/joaonada/se_project_react.git
 
-Local Terminal Link:
-[git@github.com:joaonada/se_project_react.git](https://github.com/joaonada/se_project_react.git)
+Project Pitch Video: https://www.loom.com/share/2534447585be4d958e05f98ecd190729

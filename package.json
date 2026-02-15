@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://joaonada.github.io/se_project_react/",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
@@ -15,7 +14,8 @@
   "dependencies": {
     "normalize.css": "^8.0.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
