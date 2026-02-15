@@ -7,13 +7,13 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 //import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import AddItemModal from "../../../components/AddItemModal";
+import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { addItem, getItems, removeItem } from "../../utils/api";
-//import { deleteItemHandler } from "../../utils/api"
+//import { deleteItemHandler } from "../../utils/api";
 
 //import { apiKey, location } from "../../utils/constants";
 function App() {
@@ -39,15 +39,15 @@ function App() {
   };
 
   const handleCardDelete = (card) => {
-  removeItem(card._id)  
-  .then(() => {
-    setClothingItems((prevItems) =>
-      prevItems.filter((item) => item._id !== card._id
-  ));
-    closeActiveModal();
-  })
-  .catch(console.error);
-};
+    removeItem(card._id)
+      .then(() => {
+        setClothingItems((prevItems) =>
+          prevItems.filter((item) => item._id !== card._id),
+        );
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
