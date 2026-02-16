@@ -113,12 +113,6 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Dress.png?etag=1f9cd32a311ab139cab43494883720bf\"",
       "weather": "hot",
       "_id": 20
-    },
-    {
-      "name": "Joaofffjjf",
-      "imageUrl": "https://images.pexels.com/photos/236047/pexels-photo-236047.jpeg?cs=srgb&dl=clouds-cloudy-countryside-236047.jpg&fm=jpg",
-      "weather": "cold",
-      "_id": 21
     }
   ]
 }

@@ -4,13 +4,13 @@ import ItemCard from "../ItemCard/ItemCard";
 export default function ClothesSection({
   clothingItems,
   handleCardClick,
+  handleAddClick,
 }) {
-  console.log(clothingItems);
   return (
     <div className="clothes-section">
       <div className="clothes-section__row">
-        <p>Text</p>
-        <button>BUTTON</button>
+        <p>Your items</p>
+        <button onClick={handleAddClick}>+ Add new</button>
       </div>
       <ul className="clothes-section__list">
         {clothingItems

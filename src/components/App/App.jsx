@@ -54,16 +54,14 @@ function App() {
   };
 
   const onAddItem = (inputValues) => {
-    console.log("Input values:", inputValues);
     const newCardData = {
       name: inputValues.name,
       imageUrl: inputValues.imageUrl,
       weather: inputValues.weatherType,
     };
-    console.log("New card data:", newCardData);
+
     addItem(newCardData)
       .then((data) => {
-        console.log("Response from server:", data);
         setClothingItems([data, ...clothingItems]);
         closeActiveModal();
       })
@@ -130,6 +128,7 @@ function App() {
                 <Profile
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
                 />
               }
             />

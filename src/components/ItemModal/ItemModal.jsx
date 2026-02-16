@@ -21,7 +21,7 @@ function ItemModal({ isOpen, onClose, card, handleCardDelete }) {
         Delete item
       </button>
         <img
-          src={card.link}
+          src={card.imageUrl}
           alt={`${card.name} clothing item`}
           className="modal__image"
         />
