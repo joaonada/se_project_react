@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Grotesk";
+  font-style: medium;
+  font-weight: 500;
+  src: url("./fonts/Cabinet Grotesk medium.png") format("UI text style 2/16-20 Medium");
+}
+
+@font-face {
+  font-family: "Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/Cabinet Grotesk bold.png") format("UI text style 2/16-20 Bold");
+} 

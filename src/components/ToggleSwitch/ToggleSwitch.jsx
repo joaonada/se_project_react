@@ -31,7 +31,4 @@ export default function ToggleSwitch() {
   );
 }
 
-//css proprities
-// transform: translateX(...)
-// mix-blend-mode: ... 
  
