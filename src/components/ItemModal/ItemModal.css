@@ -10,8 +10,8 @@
 }
 
 .modal__image {
-  width: 300px;
-  height: 270px;
+  width: 496px;
+  height: 268px;
   margin: -28px;
   border-radius: 10px 10px 1px 1px;
 }
@@ -47,4 +47,13 @@
   line-height: 20px;
   letter-spacing: 0%;
   
+}
+
+.modal__delete-button {
+  position: absolute;
+  bottom: 20px;    
+  right: 20px;    
+  height: 23.62px;
+  padding: 2px;
+  margin: 2px;
 }
