@@ -1,16 +1,7 @@
 .cards__list {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  gap: 21px;
-}
-
-.main__list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 283px);
-  grid-template-rows: repeat(auto-fit, 283px);
+  grid-template-columns: repeat(auto-fit, 323px);
+  grid-template-rows: repeat(auto-fit, 323px);
   grid-gap: 20px;
   padding: 0;
 }

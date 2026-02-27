@@ -58,7 +58,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
         />
       </label>
       <fieldset className="modal__radio-buttons">
-        <legend className="modal__legend">Select the weather type:</legend>
+        <legend className="modal__legend">Select weather type:</legend>
         <label htmlFor="hot" className="modal__label modal__label_type_radio">
           <input
             type="radio"
@@ -98,3 +98,4 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
 };
 
 export default AddItemModal;
+

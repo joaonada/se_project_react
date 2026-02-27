@@ -2,12 +2,12 @@
     font-family: 'Cabinet Grotesk';
     font-style: normal;
     font-weight: 500;
-    src: local('Cabinet Grotesk Medium'), url('CabinetGrotesk-Medium.woff') format('woff');
+    src:  url('./fonts/CabinetGrotesk-Medium.woff') format('woff');
     }
 
 @font-face {
     font-family: 'Cabinet Grotesk';
     font-style: normal;
     font-weight: 400;
-    src: local('Cabinet Grotesk Bold'), url('CabinetGrotesk-Bold.woff') format('woff');
+    src:  url('./fonts/CabinetGrotesk-Bold.woff') format('woff');
     }
