@@ -133,9 +133,9 @@ function App() {
               }
             />
           </Routes>
+          <Footer />
         </div>
 
-        <Footer />
         <AddItemModal
           buttonText="Add garment"
           isOpen={activeModal === "add-garment"}
