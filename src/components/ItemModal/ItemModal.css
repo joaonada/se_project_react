@@ -10,15 +10,16 @@
 }
 
 .modal__image {
-  width: 496px;
-  height: 268px;
-  margin: -28px;
+  object-fit: contain;
+  width: 498px;
+  height: 498px;
+  margin: -30px;
   border-radius: 10px 10px 1px 1px;
 }
 
 .modal__content_type_image {
-  width: 496px;
-  height: 436px;
+  width: 498px;
+  height: 610px;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
@@ -50,4 +51,21 @@
   height: 23.62px;
   padding: 2px;
   margin: 2px;
+  color: #ff4d00;
+}
+
+.modal__caption {
+  font-size: 20px;
+  line-height: 60px;
+  font-weight: 700;
+  font-style: bold;
+  letter-spacing: 0%;
+}
+
+.modal__weather {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  font-style: bold;
+  letter-spacing: 0%;
 }

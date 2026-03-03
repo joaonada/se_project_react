@@ -30,3 +30,9 @@
     object-fit: cover;
     border-radius: 20px;
 }
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(328px, 1fr));
+  gap: 20px 17px; 
+}
