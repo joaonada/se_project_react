@@ -6,16 +6,14 @@ import { coordinates, apiKey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-//import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import { addItem, getItems, removeItem } from "../../utils/api";
-//import { deleteItemHandler } from "../../utils/api";
+import { addItem, getItems, removeItem, addCardLike, removeCardLike } from "../../utils/api";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-//import { apiKey, location } from "../../utils/constants";
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
@@ -28,6 +26,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [currentUser, setCurrentUser] = useState({ isLoggedIn: false });
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -48,6 +47,25 @@ function App() {
       })
       .catch(console.error);
   };
+
+  const handleCardLike = ({ id, isLiked }) => {
+  const token = localStorage.getItem("jwt");
+  !isLiked
+    ? addCardLike(id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((item) => (item._id === id ? updatedCard : item))
+          );
+        })
+        .catch((err) => console.log(err))
+    : removeCardLike(id, token) 
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((item) => (item._id === id ? updatedCard : item))
+          );
+        })
+        .catch((err) => console.log(err));
+};
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
@@ -108,6 +126,7 @@ function App() {
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
+      <CurrentUserContext.Provider value={{ currentUser }}>
       <div className="page">
         <div className="page__content">
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
@@ -119,6 +138,7 @@ function App() {
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  handleCardLike={handleCardLike}
                 />
               }
             />
@@ -129,6 +149,7 @@ function App() {
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
                   handleAddClick={handleAddClick}
+                  handleCardLike={handleCardLike}
                 />
               }
             />
@@ -150,6 +171,7 @@ function App() {
           handleCardDelete={handleCardDelete}
         />
       </div>
+      </CurrentUserContext.Provider>
     </CurrentTemperatureUnitContext.Provider>
   );
 }

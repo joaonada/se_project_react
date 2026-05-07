@@ -30,3 +30,23 @@ export const removeItem = (itemID) => {
     }).then(handleServerResponse);
 };
 
+export const addCardLike = (itemId, token) => {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
+};
+
+export const removeCardLike = (itemId, token) => {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json", 
+      authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
+};
+

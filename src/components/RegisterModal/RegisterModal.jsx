@@ -2,7 +2,7 @@ import { useForm } from "../../../hooks/useForm";
 import { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({ isOpen, onRegister, onClose }) => {
+const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
   const defaultValues = {
     name: "",
     avatar: "",
@@ -24,8 +24,8 @@ const RegisterModal = ({ isOpen, onRegister, onClose }) => {
 
   return (
     <ModalWithForm
-      name="New garment"
-      title="New garment"
+      name="register"
+      title="Sign Up"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
@@ -45,56 +45,58 @@ const RegisterModal = ({ isOpen, onRegister, onClose }) => {
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="imageUrl" className="modal__label">
+      <label htmlFor="avatarUrl" className="modal__label">
         Avatar
         <input
           type="url"
-          name="avatarUrl"
+          name="avatar"
           className="modal__input"
           id="avatarUrl"
           placeholder="Avatar URL"
           required
-          value={values.imageUrl}
+          value={values.avatar}
           onChange={handleChange}
           autoComplete="url"
         />
       </label>
-      <fieldset className="modal__radio-buttons">
-        <legend className="modal__legend">Select avatar type:</legend>
-        <label htmlFor="hot" className="modal__label modal__label_type_radio">
-          <input
-            type="radio"
-            name="weatherType"
-            id="hot"
-            className="modal__radio-input"
-            value="hot"
-            onChange={handleChange}
-          />{" "}
-          Email
-        </label>
-        <label htmlFor="warm" className="modal__label modal__label_type_radio">
-          <input
-            type="radio"
-            name="weatherType"
-            id="warm"
-            className="modal__radio-input"
-            value="warm"
-            onChange={handleChange}
-          />{" "}
-          Password
-        </label>
-        <label htmlFor="cold" className="modal__label modal__label_type_radio">
-          <input
-            type="radio"
-            name="weatherType"
-            id="cold"
-            className="modal__radio-input"
-            value="cold"
-            onChange={handleChange}
-          />{" "}
-          Cold
-        </label>
-      </fieldset>
+      <label htmlFor="email" className="modal__label">
+        Email
+        <input
+          type="email"
+          name="email"
+          className="modal__input"
+          id="email"
+          placeholder="Email"
+          required
+          value={values.email}
+          onChange={handleChange}
+          autoComplete="email"
+        />
+      </label>
+      <label htmlFor="password" className="modal__label">
+        Password
+        <input
+          type="password"
+          name="password"
+          className="modal__input"
+          id="password"
+          placeholder="Password"
+          required
+          value={values.password}
+          onChange={handleChange}
+          autoComplete="new-password"
+        />
+      </label>
+      <p className="modal__text">
+        Already have an account?{" "}
+        <button 
+         type="button" 
+         className="modal__link" 
+         onClick={ onLoginClick }
+         >
+        Log in
+        </button>
+    </p>
     </ModalWithForm>
   );
 };
