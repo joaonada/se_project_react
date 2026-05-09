@@ -43,6 +43,7 @@ function Header({ handleAddClick, weatherData, handleSignOutClick, handleSignInC
           <div>
             <button onClick={handleSignInClick}>Sign In</button>
             <button onClick={handleSignUpClick}>Sign Up</button>
+            <button onClick={handleSignOutClick}>Sign Out</button>
           </div>
         )}
       </div>

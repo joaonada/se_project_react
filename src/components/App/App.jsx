@@ -13,6 +13,9 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { addItem, getItems, removeItem, addCardLike, removeCardLike } from "../../utils/api";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import RegisterModal from "../RegisterModal/RegisterModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import LoginModal from "../LoginModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -27,21 +30,45 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [currentUser, setCurrentUser] = useState({ isLoggedIn: false });
+  //const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  //const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
+
+  const handleRegisterClick = () => {
+  setActiveModal("sign-up"); 
+};
+
+const handleEditProfileClick = () => {
+  setActiveModal("edit-profile"); 
+};
+
+const handleSignInClick = () => {
+  setActiveModal("sign-in"); 
+};
+
+const handleSignUpClick = () => {
+  setActiveModal("sign-up"); 
+};
+
+const handleSignOutClick = () => {
+  localStorage.removeItem("jwt");  
+  setCurrentUser({ isLoggedIn: false });  
+};
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
   };
 
-  const handleCardDelete = (card) => {
-    removeItem(card._id)
+  const handleCardDelete = () => {
+    const token = localStorage.getItem("jwt");
+    removeItem(selectedCard._id, token)
       .then(() => {
         setClothingItems((prevItems) =>
-          prevItems.filter((item) => item._id !== card._id),
+          prevItems.filter((item) => item._id !== selectedCard._id),
         );
         closeActiveModal();
       })
@@ -72,13 +99,14 @@ function App() {
   };
 
   const onAddItem = (inputValues) => {
+    const token = localStorage.getItem("jwt"); 
     const newCardData = {
       name: inputValues.name,
       imageUrl: inputValues.imageUrl,
       weather: inputValues.weatherType,
     };
 
-    addItem(newCardData)
+    addItem(newCardData, token)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
         closeActiveModal();
@@ -87,6 +115,10 @@ function App() {
   };
 
   const closeActiveModal = () => {
+    setActiveModal("");
+  };
+
+  const closeAllModals = () => {
     setActiveModal("");
   };
 
@@ -129,7 +161,13 @@ function App() {
       <CurrentUserContext.Provider value={{ currentUser }}>
       <div className="page">
         <div className="page__content">
-          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+         <Header 
+          handleAddClick={handleAddClick} 
+          weatherData={weatherData}
+          handleSignInClick={handleSignInClick}
+          handleSignUpClick={handleSignUpClick}
+          handleSignOutClick={handleSignOutClick}
+/>
           <Routes>
             <Route
               path="/"
@@ -170,6 +208,18 @@ function App() {
           activeModal={activeModal}
           handleCardDelete={handleCardDelete}
         />
+        <RegisterModal
+          isOpen={activeModal === "sign-up"}
+          onClose={closeActiveModal} 
+        />
+        <LoginModal
+          isOpen={activeModal === "sign-in"}
+          onClose={closeActiveModal}
+        />
+        <EditProfileModal
+          isOpen={activeModal === "edit-profile"}
+          onClose={closeActiveModal}
+        />
       </div>
       </CurrentUserContext.Provider>
     </CurrentTemperatureUnitContext.Provider>
@@ -177,3 +227,4 @@ function App() {
 }
 
 export default App;
+
