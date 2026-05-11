@@ -45,6 +45,9 @@ or
 Please, check out my video (<video controls src="JoaoNada-ProjectPitch-ReactStage 11 .mp4" title="Implementing Temperature Switch and Clothing Item Feacture in my React Project"></video>), where I describe my
 project and some challenges I faced while building it.
 
-Project Design:
-Github Live Link: https://github.com/joaonada/se_project_react.git
-Local: http://localhost:3000/
+## Project Design
+
+Github Front-end: https://github.com/joaonada/se_project_react.git
+Local:  http://localhost:3000/
+
+Backend Repository: https://github.com/joaonada/se_project_express.git
