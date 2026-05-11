@@ -16,7 +16,7 @@ function Main({ weatherData, handleCardClick, clothingItems, handleCardLike }) {
           {currentTemperatureUnit === "F"
             ? weatherData.temp.F
             : weatherData.temp.C}{" "}
-          &deg; { currentTemperatureUnit } / You may want to wear:
+          &deg; {currentTemperatureUnit} / You may want to wear:
         </p>
         {}
         <ul className="cards__list">
@@ -30,6 +30,7 @@ function Main({ weatherData, handleCardClick, clothingItems, handleCardLike }) {
                   key={item._id}
                   item={item}
                   onCardClick={handleCardClick}
+                  onCardLike={handleCardLike}
                 />
               );
             })}

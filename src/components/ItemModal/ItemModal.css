@@ -31,23 +31,22 @@
 .modal__submit {
   width: 124px;
   height: 36px;
-  color: #FFFFFF;
+  color: #ffffff;
   border-radius: 4px;
   border: none;
   padding: 8px 16px 8px 16px;
   gap: 8px;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   font-style: Bold;
   font-weight: 400;
   line-height: 20px;
   letter-spacing: 0%;
-  
 }
 
 .modal__delete-button {
   position: absolute;
-  bottom: 20px;    
-  right: 20px;    
+  bottom: 20px;
+  right: 20px;
   height: 23.62px;
   padding: 2px;
   margin: 2px;

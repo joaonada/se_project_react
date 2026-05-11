@@ -1,26 +1,35 @@
-import { useContext, useEffect, useForm } from "react"; 
+import { useContext, useEffect } from "react";
+import { useForm } from "../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { updateUser } from "../../utils/api";
 
 const EditProfileModal = ({ isOpen, onEditItem, onClose }) => {
-  
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
   const userDataObject = {
-  name: currentUser?.name ?? "",
-  avatarUrl: currentUser?.avatarUrl ?? ""
-};
+    name: currentUser?.name ?? "",
+    avatarUrl: currentUser?.avatarUrl ?? "",
+  };
 
-console.log("Current user:", currentUser);
+  console.log("Current user:", currentUser);
 
-const { values, handleChange, setValues } = useForm(userDataObject);
+  const { values, handleChange, setValues } = useForm(userDataObject);
 
-  function handleSubmit(evt) {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
-    onEditItem(values);
-  }
 
-return (
+    const token = localStorage.getItem("jwt");
+
+    updateUser(values, token)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        onClose();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  return (
     <ModalWithForm
       name="editProfile"
       title="EditProfile"
@@ -28,13 +37,13 @@ return (
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="edit-profile-name" className="modal__label">
         Name
         <input
           type="text"
           className="modal__input"
           name="name"
-          id="EditProfile-name"
+          id="edit-profile-name"
           placeholder="Name"
           required
           minLength="1"
@@ -43,13 +52,13 @@ return (
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="avatarUrl" className="modal__label">
+      <label htmlFor="edit-avatar-url" className="modal__label">
         Avatar
         <input
           type="url"
           name="avatarUrl"
           className="modal__input"
-          id="avatarUrl"
+          id="edit-avatar-url"
           placeholder="Avatar URL"
           required
           value={values.avatarUrl}

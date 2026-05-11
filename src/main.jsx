@@ -7,7 +7,7 @@ import App from "./components/App/App";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-    <App />
+      <App />
     </BrowserRouter>
-  </StrictMode>
+  </StrictMode>,
 );

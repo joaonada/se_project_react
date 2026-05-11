@@ -2,10 +2,8 @@ import { useForm } from "../hooks/useForm";
 import { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
+const LoginModal = ({ isOpen, onClose, onLoginClick, onRegisterClick }) => {
   const defaultValues = {
-    name: "",
-    avatar: "",
     email: "",
     password: "",
   };
@@ -19,46 +17,17 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onRegister(values);
+    onLoginClick(values);
   }
 
   return (
     <ModalWithForm
-      name="register"
-      title="Sign Up"
+      name="login"
+      title="Sign In"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="register-name" className="modal__label">
-        Name
-        <input
-          type="text"
-          className="modal__input"
-          name="name"
-          id="register-name"
-          placeholder="Name"
-          required
-          minLength="1"
-          maxLength="30"
-          value={values.name}
-          onChange={handleChange}
-        />
-      </label>
-      <label htmlFor="register-avatar-url" className="modal__label">
-        Avatar
-        <input
-          type="url"
-          name="avatar"
-          className="modal__input"
-          id="register-avatar-url"
-          placeholder="Avatar URL"
-          required
-          value={values.avatar}
-          onChange={handleChange}
-          autoComplete="url"
-        />
-      </label>
       <label htmlFor="email" className="modal__label">
         Email
         <input
@@ -84,17 +53,17 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
           required
           value={values.password}
           onChange={handleChange}
-          autoComplete="new-password"
+          autoComplete="current-password"
         />
       </label>
       <p className="modal__text">
-        Already have an account?{" "}
-        <button type="button" className="modal__link" onClick={onLoginClick}>
-          Log in
+        or{" "}
+        <button type="button" className="modal__link" onClick={onRegisterClick}>
+          Sign up
         </button>
       </p>
     </ModalWithForm>
   );
 };
 
-export default RegisterModal;
+export default LoginModal;

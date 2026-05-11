@@ -6,11 +6,16 @@ export default function Profile({
   clothingItems,
   handleCardClick,
   handleAddClick,
-  handleCardLike
+  handleCardLike,
+  handleEditProfileClick,
+  handleSignOutClick,
 }) {
   return (
     <div className="profile">
-      <SideBar />
+      <SideBar
+        handleEditProfileClick={handleEditProfileClick}
+        handleSignOutClick={handleSignOutClick}
+      />
       <ClothesSection
         clothingItems={clothingItems}
         handleCardClick={handleCardClick}

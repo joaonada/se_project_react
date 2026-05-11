@@ -1,6 +1,8 @@
 .modal {
   opacity: 0;
-  transition: opacity 0.3s, visibility 0.3s;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
   position: fixed;
   top: 0;
   left: 0;
@@ -60,7 +62,7 @@
 .modal__legend {
   font-size: 12px;
   line-height: 160%;
-  margin-bottom: 12px; 
+  margin-bottom: 12px;
 }
 
 .modal__radio-buttons {
@@ -74,4 +76,3 @@
 .modal__label_type_radio {
   margin-bottom: 8px;
 }
-

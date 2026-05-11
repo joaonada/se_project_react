@@ -1,18 +1,24 @@
 import "../SideBar/SideBar.css";
-import avatar from "../../assets/avatar.png";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-export default function SideBar() {
+export default function SideBar({
+  handleSignOutClick,
+  handleEditProfileClick,
+}) {
   const { currentUser } = useContext(CurrentUserContext);
   return (
     <aside className="sidebar">
-    <div className="sidebar__user-container">
-      <p className="sidebar__username">{currentUser.name}</p>
-      <img src={currentUser.avatar} alt={currentUser.name} className="sidebar__avatar" />
-      <button handleEditProfileClick></button>
-    </div>
+      <div className="sidebar__user-container">
+        <p className="sidebar__username">{currentUser.name}</p>
+        <img
+          src={currentUser.avatarUrl}
+          alt={currentUser.name}
+          className="sidebar__avatar"
+        />
+        <button onClick={handleEditProfileClick}>Edit profile</button>
+        <button onClick={handleSignOutClick}>Sign out</button>
+      </div>
     </aside>
   );
 }
-//const handleEditProfileClick = () => { setActiveModal("edit-profile"); };

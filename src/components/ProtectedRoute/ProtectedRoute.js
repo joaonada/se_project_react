@@ -1,10 +1,10 @@
-import { useState } from "react"; 
+import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ProtectedRoute({ children }) {
   const { currentUser } = useContext(CurrentUserContext);
-  return (currentUser?.isLoggedIn) ? (children) : (<Navigate to="/" />);
+  return currentUser?.isLoggedIn ? children : <Navigate to="/" />;
 }
 
 <Route
@@ -19,5 +19,4 @@ function ProtectedRoute({ children }) {
       />
     </ProtectedRoute>
   }
-/>
-
+/>;

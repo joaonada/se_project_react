@@ -1,6 +1,9 @@
 import "./ItemModal.css";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ItemModal({ isOpen, onClose, card, handleCardDelete }) {
+  const { currentUser } = useContext(CurrentUserContext);
   const handleDeleteClick = () => {
     handleCardDelete(card);
   };
@@ -12,14 +15,12 @@ function ItemModal({ isOpen, onClose, card, handleCardDelete }) {
           type="button"
           className="modal__close"
           aria-label="Close modal"
-        >
-        </button>
-        <button 
-        className="modal__delete-button" 
-        onClick={handleDeleteClick}
-      >
-        Delete item
-      </button>
+        ></button>
+        {currentUser && card.owner === currentUser._id && (
+          <button className="modal__delete-button" onClick={handleDeleteClick}>
+            Delete item
+          </button>
+        )}
         <img
           src={card.imageUrl}
           alt={`${card.name} clothing item`}
@@ -30,7 +31,7 @@ function ItemModal({ isOpen, onClose, card, handleCardDelete }) {
           <p className="modal__weather">Weather: {card.weather}</p>
         </div>
       </div>
-       </div>
+    </div>
   );
 }
 
