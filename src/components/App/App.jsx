@@ -22,7 +22,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import LoginModal from "../LoginModal/LoginModal";
-import { signin } from "../../utils/auth";
+import { signin, signup } from "../../utils/auth";
 import { useNavigate } from "react-router-dom";
 
 function App() {
@@ -187,6 +187,26 @@ function App() {
     setActiveModal("");
   };
 
+  const handleRegistration = async (userData) => {
+  try {
+      const response = await signup(userData);
+      const data = await response.json();
+
+      if (!response.ok || data.error) {
+        setErrorMessage(data.error || "Register failed");
+        return;
+      }
+
+      localStorage.setItem("jwt", data.token);
+      setCurrentUser(data.user);
+      closeActiveModal();
+      navigate("/profile");
+    } catch (error) {
+      console.error("Register failed:", error);
+      setErrorMessage("An unexpected error occurred");
+    }
+  };
+
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -246,6 +266,7 @@ function App() {
           <RegisterModal
             isOpen={activeModal === "sign-up"}
             onClose={closeActiveModal}
+            onRegister={handleRegistration} 
           />
           <LoginModal
             isOpen={activeModal === "sign-in"}
