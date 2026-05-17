@@ -24,6 +24,7 @@ import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import LoginModal from "../LoginModal/LoginModal";
 import { signin, signup } from "../../utils/auth";
 import { useNavigate } from "react-router-dom";
+//import { register, authorize } from './utils/auth';
 
 function App() {
   const navigate = useNavigate();
@@ -162,20 +163,12 @@ function App() {
       .catch(console.error);
   }, []);
 
-  const handleLogin = async (formData) => {
+  const handleLogin = (formData) => {
     try {
-      const response = await signin(formData);
-      const data = await response.json();
-
-      if (!response.ok || data.error) {
-        setErrorMessage(data.error || "Login failed");
-        return;
-      }
-
-      localStorage.setItem("jwt", data.token);
-      setCurrentUser(data.user);
+       signin(formData).then((response) => {
+      localStorage.setItem("jwt", response.token);
       closeActiveModal();
-      navigate("/profile");
+      navigate("/profile"); });
     } catch (error) {
       console.error("Login failed:", error);
       setErrorMessage("An unexpected error occurred");
@@ -187,20 +180,12 @@ function App() {
     setActiveModal("");
   };
 
-  const handleRegistration = async (userData) => {
+  const handleRegistration = (userData) => {
   try {
-      const response = await signup(userData);
-      const data = await response.json();
-
-      if (!response.ok || data.error) {
-        setErrorMessage(data.error || "Register failed");
-        return;
-      }
-
-      localStorage.setItem("jwt", data.token);
-      setCurrentUser(data.user);
+      signup(userData).then((response) => {
+      localStorage.setItem("jwt", response.token);
       closeActiveModal();
-      navigate("/profile");
+      navigate("/profile"); });
     } catch (error) {
       console.error("Register failed:", error);
       setErrorMessage("An unexpected error occurred");
