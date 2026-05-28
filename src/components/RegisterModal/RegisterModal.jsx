@@ -29,7 +29,10 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      secondaryButtonText="Or log In"
+      openSecondaryModal={onLoginClick}
     >
+
       <label htmlFor="register-name" className="modal__label">
         Name
         <input
@@ -87,12 +90,6 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
           autoComplete="new-password"
         />
       </label>
-      <p className="modal__text">
-        Already have an account?{" "}
-        <button type="button" className="modal__link" onClick={onLoginClick}>
-          Log in
-        </button>
-      </p>
     </ModalWithForm>
   );
 };

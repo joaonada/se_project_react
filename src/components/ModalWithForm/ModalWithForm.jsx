@@ -3,11 +3,13 @@ import "./ModalWithForm.css";
 function ModalWithForm({
   title,
   name,
-  buttonText = "Save",
+  buttonText = "Log In",
   onClose,
   isOpen,
   children,
   onSubmit,
+  secondaryButtonText,
+  openSecondaryModal
 }) {
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
@@ -21,9 +23,18 @@ function ModalWithForm({
         ></button>
         <form onSubmit={onSubmit} className="modal__form" name={name}>
           {children}
-          <button type="submit" className="modal__submit">
+          <div>
+            <button type="submit" className="modal__submit">
             {buttonText}
           </button>
+
+           {
+            secondaryButtonText && 
+            <button type="button" className="modal__secondary-button" onClick={openSecondaryModal}>
+            {secondaryButtonText}
+          </button>}
+          </div>
+
         </form>
       </div>
     </div>

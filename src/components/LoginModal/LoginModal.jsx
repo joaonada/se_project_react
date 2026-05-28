@@ -2,7 +2,7 @@ import { useForm } from "../hooks/useForm";
 import { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const LoginModal = ({ isOpen, onClose, onLoginClick, onRegisterClick }) => {
+const LoginModal = ({ isOpen, onClose, onLoginClick, onRegisterClick, handleRegisterClick }) => {
   const defaultValues = {
     email: "",
     password: "",
@@ -27,6 +27,8 @@ const LoginModal = ({ isOpen, onClose, onLoginClick, onRegisterClick }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      secondaryButtonText="Or Sign up"
+      openSecondaryModal={handleRegisterClick}
     >
       <label htmlFor="email" className="modal__label">
         Email
@@ -56,12 +58,7 @@ const LoginModal = ({ isOpen, onClose, onLoginClick, onRegisterClick }) => {
           autoComplete="current-password"
         />
       </label>
-      <p className="modal__text">
-        or{" "}
-        <button type="button" className="modal__link" onClick={onRegisterClick}>
-          Sign up
-        </button>
-      </p>
+      
     </ModalWithForm>
   );
 };

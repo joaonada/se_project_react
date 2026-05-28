@@ -28,10 +28,36 @@
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
+  margin-bottom: 12px;
+  cursor: pointer;
 }
 
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(328px, 1fr));
   gap: 20px 17px;
+}
+
+.card__like-button {
+  position: absolute;
+  border: none;
+  top: 15px;
+  bottom: 16px;
+  right: 66px;
+  background: transparent url(../images/Like\ button.png) center;
+  cursor: pointer;
+  width: 23px;
+  height: 20px;
+  opacity: 0.4;
+  padding: 0;
+  margin: 0;
+}
+
+.card__like-button:hover {
+  opacity: 1;
+}
+
+.card__like-button_liked {
+  background-image: url(../images/State=Liked.png);
+  opacity: 1;
 }

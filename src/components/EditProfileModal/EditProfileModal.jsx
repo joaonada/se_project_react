@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -28,6 +28,15 @@ const EditProfileModal = ({ isOpen, onEditItem, onClose }) => {
       })
       .catch((err) => console.log(err));
   };
+
+  useEffect(() => {
+  if (isOpen && currentUser) {
+    setValues({
+      name: currentUser.name || '',
+      avatarUrl: currentUser.avatarUrl || ''
+    });
+  }
+}, [isOpen, currentUser]);
 
   return (
     <ModalWithForm

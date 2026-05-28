@@ -4,7 +4,7 @@ export const handleServerResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 };
 
-export const register = ({ name, avatar, email, password }) => {
+/* export const register = ({ name, avatar, email, password }) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
@@ -35,6 +35,7 @@ export const authorize = ({ email, password }) => {
     return Promise.reject(`Error: ${res.status}`);
   });
 };
+*/
 
 export const signup = ({ name, avatar, email, password }) => {
   return fetch(`${BASE_URL}/signup`, {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
@@ -22,9 +22,18 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import LoginModal from "../LoginModal/LoginModal";
-import { signin, signup } from "../../utils/auth";
-import { useNavigate } from "react-router-dom";
-//import { register, authorize } from './utils/auth';
+import { signin, signup, checkToken } from "../../utils/auth";
+import { useNavigate, Navigate } from "react-router-dom";
+
+function ProtectedRoute({ children }) {
+  const { currentUser } = useContext(CurrentUserContext);
+  
+  if (currentUser.isLoggedIn) {
+    return children; 
+  } else {
+    return <Navigate to="/" />; 
+  }
+}
 
 function App() {
   const navigate = useNavigate();
@@ -148,6 +157,21 @@ function App() {
   }, [activeModal]);
 
   useEffect(() => {
+    const token = localStorage.getItem("jwt");
+  if (token) {
+    checkToken(token)
+      .then((userData) => {
+        setCurrentUser({
+  ...userData,
+  isLoggedIn: true
+  });      
+      })
+      .catch(() => {
+        localStorage.removeItem("jwt");
+      setCurrentUser({ isLoggedIn: false });
+  })
+  }
+
     getWeather(coordinates, apiKey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
@@ -167,11 +191,16 @@ function App() {
     try {
        signin(formData).then((response) => {
       localStorage.setItem("jwt", response.token);
+      checkToken(response.token).then((userData) => {
+        setCurrentUser({
+  ...userData,
+  isLoggedIn: true
+  }); 
       closeActiveModal();
-      navigate("/profile"); });
+      navigate("/profile"); 
+    });})
     } catch (error) {
       console.error("Login failed:", error);
-      setErrorMessage("An unexpected error occurred");
     }
   };
 
@@ -181,16 +210,24 @@ function App() {
   };
 
   const handleRegistration = (userData) => {
-  try {
-      signup(userData).then((response) => {
+  signup(userData)
+    .then((response) => {
       localStorage.setItem("jwt", response.token);
+      return checkToken(response.token);
+    })
+    .then((userData) => {
+      setCurrentUser({
+  ...userData,
+  isLoggedIn: true
+  });    
       closeActiveModal();
-      navigate("/profile"); });
-    } catch (error) {
+      navigate("/profile");
+    })
+    .catch((error) => {
       console.error("Register failed:", error);
       setErrorMessage("An unexpected error occurred");
-    }
-  };
+    });
+};
 
   return (
     <CurrentTemperatureUnitContext.Provider
@@ -221,6 +258,7 @@ function App() {
               <Route
                 path="/profile"
                 element={
+                  <ProtectedRoute>
                   <Profile
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
@@ -229,6 +267,7 @@ function App() {
                     handleEditProfileClick={handleEditProfileClick}
                     handleSignOutClick={handleSignOutClick}
                   />
+                  </ProtectedRoute>
                 }
               />
             </Routes>
@@ -252,11 +291,13 @@ function App() {
             isOpen={activeModal === "sign-up"}
             onClose={closeActiveModal}
             onRegister={handleRegistration} 
+            onLoginClick={handleSignInClick}
           />
           <LoginModal
             isOpen={activeModal === "sign-in"}
             onClose={closeActiveModal}
             onLoginClick={handleLogin}
+            handleRegisterClick={handleRegisterClick}
           />
           <EditProfileModal
             onUpdateUser={handleUpdateUser}
@@ -267,6 +308,6 @@ function App() {
       </CurrentUserContext.Provider>
     </CurrentTemperatureUnitContext.Provider>
   );
-}
+};
 
 export default App;
