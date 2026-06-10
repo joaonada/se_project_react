@@ -45,6 +45,7 @@
   bottom: 16px;
   right: 66px;
   background: transparent url(../images/Like\ button.png) center;
+  background-repeat: no-repeat;
   cursor: pointer;
   width: 23px;
   height: 20px;
@@ -58,6 +59,6 @@
 }
 
 .card__like-button_liked {
-  background-image: url(../images/State=Liked.png);
+  background-image: url(../images/liked\ button.png);
   opacity: 1;
 }

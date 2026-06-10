@@ -3,7 +3,7 @@ import "./ModalWithForm.css";
 function ModalWithForm({
   title,
   name,
-  buttonText = "Log In",
+  buttonText = "Save",
   onClose,
   isOpen,
   children,

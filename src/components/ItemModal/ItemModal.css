@@ -51,6 +51,8 @@
   padding: 2px;
   margin: 2px;
   color: #ff4d00;
+  border: none;
+  background-color: #fff;
 }
 
 .modal__caption {
