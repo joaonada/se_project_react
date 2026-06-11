@@ -21,3 +21,13 @@
   object-fit: cover;
   display: block;
 }
+
+.sidebar__user-container {
+  border: none;
+}
+
+.sidebar__btn {
+  border: none;
+  display: block;
+  margin: 8px;
+}

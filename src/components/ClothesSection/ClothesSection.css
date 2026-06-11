@@ -13,3 +13,7 @@
   grid-gap: 20px;
   padding: 0;
 }
+
+.clothes-add-btn {
+  border: none;
+}

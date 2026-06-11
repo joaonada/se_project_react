@@ -35,10 +35,10 @@ function Header({
         {currentUser?.isLoggedIn ? (
           <>
           <ToggleSwitch />
-            <p className="header__username">{currentUser.name}</p>
+            <p className="header__username" onClick={handleAddClick}>{currentUser.name}</p>
             <img
               src={avatar}
-              alt={currentUser.name}
+              alt={currentUser.avatar}
               className="header__avatar"
             />
             <button

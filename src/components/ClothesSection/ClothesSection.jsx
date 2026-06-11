@@ -20,7 +20,7 @@ export default function ClothesSection({
     <div className="clothes-section">
       <div className="clothes-section__row">
         <p>Your items:</p>
-        <button onClick={handleAddClick}>+ Add clothes</button>
+        <button className="clothes-add-btn" onClick={handleAddClick}>+ Add clothes</button>
       </div>
       <ul className="clothes-section__list">
         {userItems.map((item) => {

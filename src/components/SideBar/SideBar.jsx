@@ -16,8 +16,8 @@ export default function SideBar({
           alt={currentUser.name}
           className="sidebar__avatar"
         />
-        <button onClick={handleEditProfileClick}>Edit profile</button>
-        <button onClick={handleSignOutClick}>Sign out</button>
+        <button className="sidebar__btn" onClick={handleEditProfileClick}>Change profile data</button>
+        <button className="sidebar__btn" onClick={handleSignOutClick}>Log out</button>
       </div>
     </aside>
   );
