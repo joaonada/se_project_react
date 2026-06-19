@@ -1,8 +1,14 @@
-import { useForm } from "../hooks/useForm";
+import { useForm } from "../../hooks/useForm";
 import { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const LoginModal = ({ isOpen, onClose, onLoginClick, onRegisterClick, handleRegisterClick }) => {
+const LoginModal = ({
+  isOpen,
+  onClose,
+  onLoginClick,
+  onRegisterClick,
+  handleRegisterClick,
+}) => {
   const defaultValues = {
     email: "",
     password: "",
@@ -58,7 +64,6 @@ const LoginModal = ({ isOpen, onClose, onLoginClick, onRegisterClick, handleRegi
           autoComplete="current-password"
         />
       </label>
-      
     </ModalWithForm>
   );
 };

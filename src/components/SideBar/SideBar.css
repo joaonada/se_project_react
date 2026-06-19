@@ -16,14 +16,17 @@
 .sidebar__avatar {
   margin-left: 12px;
   flex: 0 0 40px;
-  height: 56px;
   border-radius: 50%;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
   display: block;
+
 }
 
 .sidebar__user-container {
-  border: none;
+  display: flex;
+  gap: 10px;
 }
 
 .sidebar__btn {

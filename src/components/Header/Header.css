@@ -24,12 +24,15 @@
   border: none;
   background-color: transparent;
   margin-left: auto;
+  width: 116px;
+  height: 24px;
 }
 
 .header__user-container {
   display: flex;
   align-items: center;
   gap: 12px;
+  font-size: 16px;
 }
 
 .header__username {
@@ -41,6 +44,7 @@
 
 .header__avatar {
   flex: 0 0 40px;
+  width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;

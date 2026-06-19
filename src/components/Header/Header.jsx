@@ -4,6 +4,7 @@ import "./Header.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import Logo from "../images/Logo.png";
 import avatar from "../images/avatar.png";
+import { Link, Navigate } from "react-router-dom";
 
 function Header({
   handleAddClick,
@@ -22,7 +23,9 @@ function Header({
   return (
     <header className="header">
       <div className="header__logo">
-        <img src={ Logo } />
+        <Link to="/">
+          <img src={Logo} alt="WTWR logo" />
+        </Link>
         <div className="header__date-location">
           <p className="header__date">{currentDate},</p>
           <p className="header__location">
@@ -34,25 +37,32 @@ function Header({
       <div className="header__user-container">
         {currentUser?.isLoggedIn ? (
           <>
-          <ToggleSwitch />
-            <p className="header__username" onClick={handleAddClick}>{currentUser.name}</p>
-            <img
-              src={avatar}
-              alt={currentUser.avatar}
-              className="header__avatar"
-            />
+            <ToggleSwitch />
             <button
-              onClick={handleSignOutClick}
-              type="button"
-              className="header__btn"
+              className="header__add-clothes-btn"
+              onClick={handleAddClick}
             >
-              Sign Out
+              + Add Clothes
             </button>
+            <Link to="/profile">
+              <p className="header__username">{currentUser.name}</p>
+            </Link>
+            <Link to="/profile">
+              <img
+                src={currentUser.avatar}
+                alt={`${name} some text`}
+                className="header__avatar"
+              />{" "}
+            </Link>
           </>
         ) : (
           <div className="header__btn-group">
-            <button className="header__btn" onClick={handleSignInClick}>Sign In</button>
-            <button className="header__btn" onClick={handleSignUpClick}>Sign Up</button>
+            <button className="header__btn" onClick={handleSignInClick}>
+              Sign In
+            </button>
+            <button className="header__btn" onClick={handleSignUpClick}>
+              Sign Up
+            </button>
           </div>
         )}
       </div>

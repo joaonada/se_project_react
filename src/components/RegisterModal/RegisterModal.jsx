@@ -1,4 +1,4 @@
-import { useForm } from "../hooks/useForm";
+import { useForm } from "../../hooks/useForm";
 import { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
@@ -32,7 +32,6 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
       secondaryButtonText="Or log In"
       openSecondaryModal={onLoginClick}
     >
-
       <label htmlFor="register-name" className="modal__label">
         Name
         <input

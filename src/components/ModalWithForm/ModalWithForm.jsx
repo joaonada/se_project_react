@@ -1,4 +1,5 @@
 import "./ModalWithForm.css";
+import useModalClose from "../../hooks/useModalClose";
 
 function ModalWithForm({
   title,
@@ -9,8 +10,9 @@ function ModalWithForm({
   children,
   onSubmit,
   secondaryButtonText,
-  openSecondaryModal
+  openSecondaryModal,
 }) {
+  useModalClose(isOpen, onClose);
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
       <div className="modal__content">
@@ -25,20 +27,24 @@ function ModalWithForm({
           {children}
           <div>
             <button type="submit" className="modal__submit">
-            {buttonText}
-          </button>
+              {buttonText}
+            </button>
 
-           {
-            secondaryButtonText && 
-            <button type="button" className="modal__secondary-button" onClick={openSecondaryModal}>
-            {secondaryButtonText}
-          </button>}
+            {secondaryButtonText && (
+              <button
+                type="button"
+                className="modal__secondary-button"
+                onClick={openSecondaryModal}
+              >
+                {secondaryButtonText}
+              </button>
+            )}
           </div>
-
         </form>
       </div>
     </div>
   );
 }
+
 
 export default ModalWithForm;

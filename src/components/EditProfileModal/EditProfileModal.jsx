@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useForm } from "../hooks/useForm";
+import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { updateUser } from "../../utils/api";
@@ -30,13 +30,13 @@ const EditProfileModal = ({ isOpen, onEditItem, onClose }) => {
   };
 
   useEffect(() => {
-  if (isOpen && currentUser) {
-    setValues({
-      name: currentUser.name || '',
-      avatarUrl: currentUser.avatarUrl || ''
-    });
-  }
-}, [isOpen, currentUser]);
+    if (isOpen && currentUser) {
+      setValues({
+        name: currentUser.name || "",
+        avatarUrl: currentUser.avatarUrl || "",
+      });
+    }
+  }, [isOpen, currentUser]);
 
   return (
     <ModalWithForm

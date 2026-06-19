@@ -8,22 +8,26 @@ export const handleServerResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 };
 
+export const request = (url, options) => {
+  return fetch(url, options).then(handleServerResponse);
+};
+
 export const getItems = () =>
   fetch(`${baseUrl}/items`, { headers }).then(handleServerResponse);
 
 export const addItem = ({ name, imageUrl, weather }, token) => {
-    return fetch(`${baseUrl}/items`, {
-        method: "POST",
-        headers: {
-            ...headers,
-            Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({
-            name,
-            imageUrl,
-            weather,
-        }),
-    }).then(handleServerResponse);
+  return request(`${baseUrl}/items`, {
+    method: "POST",
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      imageUrl,
+      weather,
+    }),
+  });
 };
 
 export const removeItem = (id, token) => {
