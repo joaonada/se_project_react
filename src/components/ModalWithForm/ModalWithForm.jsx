@@ -1,7 +1,7 @@
 import "./ModalWithForm.css";
 import useModalClose from "../../hooks/useModalClose";
 
-function ModalWithForm({
+function ModalWithForm({ 
   title,
   name,
   buttonText = "Save",
@@ -47,4 +47,4 @@ function ModalWithForm({
 }
 
 
-export default ModalWithForm;
+export default ModalWithForm; 

@@ -6,7 +6,6 @@ const LoginModal = ({
   isOpen,
   onClose,
   onLoginClick,
-  onRegisterClick,
   handleRegisterClick,
 }) => {
   const defaultValues = {

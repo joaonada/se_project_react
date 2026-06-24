@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { updateUser } from "../../utils/api";
 
-const EditProfileModal = ({ isOpen, onEditItem, onClose }) => {
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+const EditProfileModal = ({ isOpen, onUpdateUser, onClose }) => {
+  const { currentUser } = useContext(CurrentUserContext);
 
   const userDataObject = {
     name: currentUser?.name ?? "",
@@ -19,11 +18,8 @@ const EditProfileModal = ({ isOpen, onEditItem, onClose }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
-    const token = localStorage.getItem("jwt");
-
-    updateUser(values, token)
-      .then((updatedUser) => {
-        setCurrentUser(updatedUser);
+    onUpdateUser(values)
+      .then(() => {
         onClose();
       })
       .catch((err) => console.log(err));

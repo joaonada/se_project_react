@@ -1,15 +1,13 @@
+import "./Header.css";
 import { useContext } from "react";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-import "./Header.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import Logo from "../images/Logo.png";
-import avatar from "../images/avatar.png";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Header({
   handleAddClick,
   weatherData,
-  handleSignOutClick,
   handleSignInClick,
   handleSignUpClick,
 }) {

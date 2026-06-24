@@ -1,5 +1,5 @@
 const BASE_URL = "http://localhost:3001";
-import { handleServerResponse, request } from "./api";
+import { handleServerResponse } from "./api";
 
 export const signup = ({ name, avatar, email, password }) => {
   return fetch(`${BASE_URL}/signup`, {

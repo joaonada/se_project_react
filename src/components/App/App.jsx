@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
@@ -24,17 +24,8 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import LoginModal from "../LoginModal/LoginModal";
 import { signin, signup, checkToken } from "../../utils/auth";
-import { useNavigate, Navigate } from "react-router-dom";
-
-function ProtectedRoute({ children }) {
-  const { currentUser } = useContext(CurrentUserContext);
-
-  if (currentUser.isLoggedIn) {
-    return children;
-  } else {
-    return <Navigate to="/" />;
-  }
-}
+import { useNavigate } from "react-router-dom";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 
 function App() {
   const navigate = useNavigate();
@@ -50,7 +41,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [currentUser, setCurrentUser] = useState({ isLoggedIn: false });
-  const [errorMessage, setErrorMessage] = useState("");
+  // const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleToggleSwitchChange = () => {
@@ -140,9 +131,7 @@ function App() {
 
     const makeRequest = () => {
       return addItem(newCardData, token).then((updatedCard) => {
-        setClothingItems((cards) =>
-          cards.concat((item) => (item._id === id ? updatedCard : item)),
-        );
+        setClothingItems([updatedCard, ...clothingItems]); 
       });
     };
 
@@ -216,13 +205,16 @@ function App() {
 
   const handleUpdateUser = (updatedUserData) => {
     const token = localStorage.getItem("jwt");
-    setCurrentUser({
-      ...updatedUserData,
-      isLoggedIn: true,
-    });
     const makeRequest = () => {
-      return updateUser(inputValues).then(setCurrentUser);
-    };
+      return updateUser(updatedUserData, token)
+        .then((userData) => {
+     setCurrentUser({
+  ...userData,
+  isLoggedIn: true,
+});
+  })  
+  .catch((err) => console.log(err));
+};
 
     handleSubmit(makeRequest);
   };
@@ -243,7 +235,6 @@ function App() {
       })
       .catch((error) => {
         console.error("Register failed:", error);
-        setErrorMessage("An unexpected error occurred");
       });
   };
 
@@ -276,7 +267,7 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  <ProtectedRoute>
+                  <ProtectedRoute isLoggedIn={currentUser?.isLoggedIn}>
                     <Profile
                       handleCardClick={handleCardClick}
                       clothingItems={clothingItems}

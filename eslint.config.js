@@ -35,10 +35,10 @@ export default [
       ],
       "react/prop-types": 0,
     },
-    overrides: [
+   /* overrides: [
       {
         files: ["*.js", "*.jsx"],
       },
-    ],
+    ], */
   },
 ];
